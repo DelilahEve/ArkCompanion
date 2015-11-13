@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Ark Companion</string>
+    <string name="content_description">Image</string>
+    <string name="location">Location</string><!-- location :D -->
+    <string name="tips">Tips</string>
+    <string name="artifacts">Artifacts</string>
+    <string name="beacons">Beacons</string>
+    <string name="item_quality">Item Quality</string>
+    <string name="dossier">Dossier</string>
+    <string name="kibble">Kibble</string>
+    <string name="dyes">Dyes</string>
+    <string name="recipes">Recipes</string>
+    <string name="patch_notes">Patch Notes</string>
+    <string name="server_manager">Server Manager [WIP]</string>
+    <string name="action_toggle_grid">Switch view mode</string>
+    <string name="quality">Quality</string>
+    <string name="durability">Durability</string>
+    <string name="damage">Damage</string>
+    <string name="items_affected">Items Affected</string>
+    <string name="level">Level</string>
+    <string name="colour">Colour</string>
+    <string name="items">Items</string>
+    <string name="blueprints">Blueprints</string>
+    <string name="favourite_for">Favourite For</string>
+    <string name="egg">Egg</string>
+    <string name="plant">Plant</string>
+    <string name="meat">Meat</string>
+    <string name="recipe">Recipe</string>
+    <string name="materials">Materials</string>
+    <string name="effects">Effects</string>
+    <string name="show_names">Show Names</string>
+
+    <string name="beacon_warning">
+        Caution should be taken when waiting for a descending beacon. You can be pushed through the
+        world if you are standing beneath it when it lands.
+    </string>
+
+    <string name="kibble_warning">
+        All recipes require 2 mejoberries, 3 fiber, and water. The only exception is Quetzal Egg
+        Kibble which calls for 100 mejoberries and 120 fiber.
+    </string>
+
+    <string name="recipe_warning">
+        All recipes require water except when making jerky which requires 1 oil and 3 sparkpowder
+        instead.
+    </string>
+
+    <string name="dye_warning">
+        All recipes require water
+    </string>
+
+</resources>
