@@ -55,25 +55,39 @@
         android:textStyle="bold"
         android:textColor="#222" />
 
-    <ImageView
-        android:id="@+id/artifact_map"
-        android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/content_description" />
-
     <TextView
+        android:id="@+id/artifact_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" />
+
+    <LinearLayout
         android:id="@+id/tips_toggle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
-        android:drawableRight="@drawable/action_expand"
-        android:text="@string/tips"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="#222" />
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/tips"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#222" />
+
+        <ImageView
+            android:id="@+id/tips_toggle_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/action_expand"
+            android:contentDescription="@string/content_description" />
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/tips_container"

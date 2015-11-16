@@ -1,21 +1,20 @@
-package ca.delilaheve.arkcompanion.data;
+package ca.delilaheve.arkcompanion.util.loader;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.InputStream;
 
 public abstract class XMLLoader {
 
-    public void load(File file){
+    public void load(InputStream input){
         try {
             // Create Pull Parser to read file
             XmlPullParser xpp;
             XmlPullParserFactory xppFactory = XmlPullParserFactory.newInstance();
             xppFactory.setNamespaceAware(true);
             xpp = xppFactory.newPullParser();
-            xpp.setInput(new FileInputStream(file), null);
+            xpp.setInput(input, null);
 
             // Reading XML file
             String currentTag = "";
@@ -36,11 +35,14 @@ public abstract class XMLLoader {
 
                     // Get text and pass to textRead event
                     String text = xpp.getText();
+                    text = text.trim();
+                    text = text.replace("\\n", " ");
+
                     textRead(currentTag, text);
                 }
-                else if(event == XmlPullParser.END_TAG && xpp.getName().equals("artifact")) {
+                else if(event == XmlPullParser.END_TAG) {
                     // Fire end tag read event
-                    endTagRead();
+                    endTagRead(xpp.getName());
                 }
             }
         } catch (Exception e) {
@@ -52,5 +54,5 @@ public abstract class XMLLoader {
 
     public abstract void textRead(String tag, String text);
 
-    public abstract void endTagRead();
+    public abstract void endTagRead(String tag);
 }

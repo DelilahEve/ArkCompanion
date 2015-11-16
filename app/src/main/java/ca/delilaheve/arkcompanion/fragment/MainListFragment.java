@@ -20,7 +20,7 @@ public class MainListFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ListView view = (ListView) inflater.inflate(R.layout.fragment_main_list, container, false);
+        ListView view = (ListView) inflater.inflate(R.layout.fragment_list, container, false);
         view.setAdapter(new MainAdapter(getActivity(), false));
 
         view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
