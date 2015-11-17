@@ -3,8 +3,6 @@ package ca.delilaheve.arkcompanion.fragment;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +32,8 @@ public class ArtifactFragment extends Fragment implements AsyncTaskImplementer {
 
     private int artifactId;
 
+    private ArtifactsLoader loader;
+
     public ArtifactFragment() {}
 
     @Override
@@ -62,8 +62,15 @@ public class ArtifactFragment extends Fragment implements AsyncTaskImplementer {
     @Override
     public void onTaskComplete(String taskId) {
         if(taskId.equals("fileRetriever")){
-            ArtifactsLoader loader = new ArtifactsLoader();
-            loader.load(retriever.getInputStream());
+            loader = new ArtifactsLoader(null, this, "loader", retriever.getInputStream());
+            Thread thread = new Thread(loader);
+            thread.start();
+        }
+        else if(taskId.equals("imageRetriever")) {
+            ImageView image = (ImageView) view.findViewById(R.id.artifact_image);
+            image.setImageBitmap(imageRetriever.getImage());
+        }
+        else if(taskId.equals("loader")) {
             artifact = loader.getArtifacts().get(artifactId);
 
             final TextView name, level, location;
@@ -114,11 +121,6 @@ public class ArtifactFragment extends Fragment implements AsyncTaskImplementer {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-        }
-        else if(taskId.equals("imageRetriever")) {
-            ImageView image = (ImageView) view.findViewById(R.id.artifact_image);
-            image.setImageBitmap(imageRetriever.getImage());
         }
     }
 

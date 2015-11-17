@@ -1,8 +1,11 @@
 package ca.delilaheve.arkcompanion.util.loader;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 import ca.delilaheve.arkcompanion.data.ItemQuality;
+import ca.delilaheve.arkcompanion.util.asynctask.AsyncTaskImplementer;
 
 public class ItemQualityLoader extends XMLLoader {
 
@@ -12,7 +15,8 @@ public class ItemQualityLoader extends XMLLoader {
 
     private ItemQuality quality;
 
-    public ItemQualityLoader() {
+    public ItemQualityLoader(URL url, AsyncTaskImplementer implementer, String taskId, InputStream input) {
+        super(url, implementer, taskId, input);
         qualities = new ArrayList<>();
         itemsAffected = new ArrayList<>();
     }

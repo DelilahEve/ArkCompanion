@@ -1,8 +1,11 @@
 package ca.delilaheve.arkcompanion.util.loader;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 import ca.delilaheve.arkcompanion.data.Beacon;
+import ca.delilaheve.arkcompanion.util.asynctask.AsyncTaskImplementer;
 
 public class BeaconsLoader extends XMLLoader {
 
@@ -10,7 +13,8 @@ public class BeaconsLoader extends XMLLoader {
 
     private Beacon beacon;
 
-    public BeaconsLoader() {
+    public BeaconsLoader(URL url, AsyncTaskImplementer implementer, String taskId, InputStream input) {
+        super(url, implementer, taskId, input);
         beacons = new ArrayList<>();
     }
 

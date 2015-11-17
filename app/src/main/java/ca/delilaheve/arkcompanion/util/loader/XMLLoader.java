@@ -4,8 +4,24 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.InputStream;
+import java.net.URL;
 
-public abstract class XMLLoader {
+import ca.delilaheve.arkcompanion.util.asynctask.AsyncTask;
+import ca.delilaheve.arkcompanion.util.asynctask.AsyncTaskImplementer;
+
+public abstract class XMLLoader extends AsyncTask {
+
+    private InputStream input;
+
+    public XMLLoader(URL url, AsyncTaskImplementer implementer, String taskId, InputStream input){
+        super(taskId, implementer);
+        this.input = input;
+    }
+
+    @Override
+    public void run() {
+        load(input);
+    }
 
     public void load(InputStream input){
         try {
@@ -45,6 +61,9 @@ public abstract class XMLLoader {
                     endTagRead(xpp.getName());
                 }
             }
+
+            input.close();
+            taskCompleted();
         } catch (Exception e) {
             e.printStackTrace();
         }

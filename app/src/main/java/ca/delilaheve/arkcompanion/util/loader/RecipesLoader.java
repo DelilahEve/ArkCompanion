@@ -1,8 +1,11 @@
 package ca.delilaheve.arkcompanion.util.loader;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 import ca.delilaheve.arkcompanion.data.Recipe;
+import ca.delilaheve.arkcompanion.util.asynctask.AsyncTaskImplementer;
 
 public class RecipesLoader extends XMLLoader {
 
@@ -10,7 +13,8 @@ public class RecipesLoader extends XMLLoader {
 
     private Recipe recipe;
 
-    public RecipesLoader() {
+    public RecipesLoader(URL url, AsyncTaskImplementer implementer, String taskId, InputStream input) {
+        super(url, implementer, taskId, input);
         recipes = new ArrayList<>();
     }
 

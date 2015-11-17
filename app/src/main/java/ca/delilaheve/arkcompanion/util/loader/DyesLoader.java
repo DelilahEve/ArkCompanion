@@ -1,8 +1,11 @@
 package ca.delilaheve.arkcompanion.util.loader;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 import ca.delilaheve.arkcompanion.data.Dye;
+import ca.delilaheve.arkcompanion.util.asynctask.AsyncTaskImplementer;
 
 public class DyesLoader extends XMLLoader {
 
@@ -10,7 +13,8 @@ public class DyesLoader extends XMLLoader {
 
     private Dye dye;
 
-    public DyesLoader() {
+    public DyesLoader(URL url, AsyncTaskImplementer implementer, String taskId, InputStream input) {
+        super(url, implementer, taskId, input);
         dyes = new ArrayList<>();
     }
 

@@ -1,8 +1,11 @@
 package ca.delilaheve.arkcompanion.util.loader;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 import ca.delilaheve.arkcompanion.data.Artifact;
+import ca.delilaheve.arkcompanion.util.asynctask.AsyncTaskImplementer;
 
 public class ArtifactsLoader extends XMLLoader {
 
@@ -11,7 +14,8 @@ public class ArtifactsLoader extends XMLLoader {
 
     private Artifact artifact;
 
-    public ArtifactsLoader() {
+    public ArtifactsLoader(URL url, AsyncTaskImplementer implementer, String taskId, InputStream input) {
+        super(url, implementer, taskId, input);
         artifacts = new ArrayList<>();
     }
 

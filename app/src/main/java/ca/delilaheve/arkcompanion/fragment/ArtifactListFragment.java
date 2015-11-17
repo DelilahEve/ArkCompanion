@@ -28,6 +28,8 @@ public class ArtifactListFragment extends Fragment implements AsyncTaskImplement
 
     private View view;
 
+    private ArtifactsLoader loader;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_list, container, false);
@@ -52,21 +54,27 @@ public class ArtifactListFragment extends Fragment implements AsyncTaskImplement
 
     @Override
     public void onTaskComplete(String taskId) {
-        ArtifactsLoader loader = new ArtifactsLoader();
-        loader.load(retriever.getInputStream());
+        switch (taskId) {
+            case "fileRetriever":
+                loader = new ArtifactsLoader(null, this, "loader", retriever.getInputStream());
+                Thread thread = new Thread(loader);
+                thread.start();
+                break;
+            case "loader":
+                ListView listView = (ListView) view.findViewById(R.id.item_list);
+                final ArtifactAdapter adapter = new ArtifactAdapter(getActivity(), loader.getArtifacts());
+                listView.setAdapter(adapter);
 
-        ListView listView = (ListView) view.findViewById(R.id.item_list);
-        final ArtifactAdapter adapter = new ArtifactAdapter(getActivity(), loader.getArtifacts());
-        listView.setAdapter(adapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(getActivity(), ArtifactDetailActivity.class);
-                i.putExtra("artifactId", position);
-                startActivity(i);
-            }
-        });
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent i = new Intent(getActivity(), ArtifactDetailActivity.class);
+                        i.putExtra("artifactId", position);
+                        startActivity(i);
+                    }
+                });
+                break;
+        }
     }
 
     @Override

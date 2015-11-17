@@ -15,7 +15,13 @@ public abstract class AsyncTask implements Runnable {
 
     public void taskCompleted() {
         Activity activity = implementer.getCurrentActivity();
-        activity.runOnUiThread(new AsyncTaskCompleteHandler(taskId, implementer));
+        if(activity != null)
+            activity.runOnUiThread(new AsyncTaskCompleteHandler(taskId, implementer));
+    }
+
+    public void startTask() {
+        Thread thread = new Thread(this);
+        thread.start();
     }
 
 }

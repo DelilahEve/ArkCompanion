@@ -4,17 +4,31 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="wrap_content" >
 
-    <TextView
+    <LinearLayout
         android:id="@+id/loot_section_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:gravity="center_vertical"
-        android:drawableRight="@drawable/action_expand"
-        android:textColor="#222" />
+        android:paddingBottom="8dp" >
+
+        <TextView
+            android:id="@+id/colour"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="#222" />
+
+        <ImageView
+            android:id="@+id/header_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/action_expand"
+            android:contentDescription="@string/content_description"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/loot_table_header"
@@ -48,23 +62,6 @@
         android:id="@+id/loot_table"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:baselineAligned="false" >
-
-        <LinearLayout
-            android:id="@+id/loot_items"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical" />
-
-        <LinearLayout
-            android:id="@+id/loot_blueprints"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical" />
-
-    </LinearLayout>
+        android:orientation="vertical" />
 
 </LinearLayout>
