@@ -4,8 +4,9 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import ca.delilaheve.arkcompanion.adapter.ServerManagerFragment;
-import ca.delilaheve.arkcompanion.fragment.ArtifactsFragment;
+import ca.delilaheve.arkcompanion.fragment.ArtifactListFragment;
+import ca.delilaheve.arkcompanion.fragment.ServerManagerFragment;
+import ca.delilaheve.arkcompanion.fragment.ArtifactFragment;
 import ca.delilaheve.arkcompanion.fragment.BeaconsFragment;
 import ca.delilaheve.arkcompanion.fragment.DossierFragment;
 import ca.delilaheve.arkcompanion.fragment.DyesFragment;
@@ -27,7 +28,7 @@ public class FragmentContainerActivity extends AppCompatActivity {
 
         switch (pos) {
             case 0:
-                fragment = new ArtifactsFragment();
+                fragment = new ArtifactListFragment();
                 break;
             case 1:
                 fragment = new BeaconsFragment();
@@ -54,7 +55,7 @@ public class FragmentContainerActivity extends AppCompatActivity {
                 fragment = new ServerManagerFragment();
                 break;
             default:
-                fragment = new ArtifactsFragment();
+                fragment = new ArtifactFragment();
                 break;
         }
 

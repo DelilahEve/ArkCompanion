@@ -18,9 +18,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment);
-
-        // load view setting
-
         setFragment();
     }
 
@@ -28,7 +25,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
-        return super.onCreateOptionsMenu(menu);
+
+        syncViewIcon(menu.findItem(R.id.action_toggle_gridview));
+        return true;
     }
 
     @Override
@@ -55,5 +54,9 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = isListView ? new MainListFragment() : new MainGridFragment();
         getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
 
+    }
+
+    private void syncViewIcon(MenuItem item) {
+        item.setIcon(isListView ? R.drawable.action_view_grid : R.drawable.action_view_list);
     }
 }

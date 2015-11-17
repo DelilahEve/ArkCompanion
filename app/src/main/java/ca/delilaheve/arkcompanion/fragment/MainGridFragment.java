@@ -20,7 +20,7 @@ public class MainGridFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        GridView view = (GridView) inflater.inflate(R.layout.fragment_main_grid, container, false);
+        GridView view = (GridView) inflater.inflate(R.layout.fragment_grid, container, false);
         view.setAdapter(new MainAdapter(getActivity(), true));
 
         view.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -1,4 +1,4 @@
-package ca.delilaheve.arkcompanion.adapter;
+package ca.delilaheve.arkcompanion.fragment;
 
 import android.app.Fragment;
 
