@@ -11,7 +11,8 @@ public class Recipe implements Serializable {
     private ArrayList<String> effects;
 
     public Recipe(){
-
+        materials = new ArrayList<>();
+        effects = new ArrayList<>();
     }
 
     public void setName(String name) {
@@ -19,11 +20,11 @@ public class Recipe implements Serializable {
     }
 
     public void addMaterial(String material) {
-
+        materials.add(material);
     }
 
     public void addEffect(String effect) {
-
+        effects.add(effect);
     }
 
     public String getName() {

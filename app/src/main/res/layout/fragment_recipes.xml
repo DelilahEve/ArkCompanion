@@ -21,6 +21,16 @@
             android:text="@string/recipe_warning"
             android:textColor="#222" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center_vertical"
+            android:drawableLeft="@drawable/alert_warning"
+            android:drawablePadding="12dp"
+            android:text="@string/jerky_warning"
+            android:textColor="#222" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

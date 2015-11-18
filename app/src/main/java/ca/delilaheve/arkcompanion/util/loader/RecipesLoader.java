@@ -20,7 +20,7 @@ public class RecipesLoader extends XMLLoader {
 
     @Override
     public void startTagRead(String tag) {
-        if(tag.equals("level"))
+        if(tag.equals("recipe"))
             recipe = new Recipe();
     }
 
@@ -41,7 +41,7 @@ public class RecipesLoader extends XMLLoader {
 
     @Override
     public void endTagRead(String tag) {
-        if(tag.equals("level"))
+        if(tag.equals("recipe"))
             recipes.add(recipe);
     }
 

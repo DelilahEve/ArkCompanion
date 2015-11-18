@@ -45,6 +45,11 @@
         instead.
     </string>
 
+    <string name="jerky_warning">
+        All recipes are made in the cooking pot with the exception of jerky, which is made in the
+        preserving bin.
+    </string>
+
     <string name="dye_warning">
         All recipes require water
     </string>
