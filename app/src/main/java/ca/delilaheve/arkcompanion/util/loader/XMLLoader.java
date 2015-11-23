@@ -13,6 +13,8 @@ public abstract class XMLLoader extends AsyncTask {
 
     private InputStream input;
 
+    private XmlPullParser xpp;
+
     public XMLLoader(URL url, AsyncTaskImplementer implementer, String taskId, InputStream input){
         super(taskId, implementer);
         this.input = input;
@@ -26,7 +28,6 @@ public abstract class XMLLoader extends AsyncTask {
     public void load(InputStream input){
         try {
             // Create Pull Parser to read file
-            XmlPullParser xpp;
             XmlPullParserFactory xppFactory = XmlPullParserFactory.newInstance();
             xppFactory.setNamespaceAware(true);
             xpp = xppFactory.newPullParser();
@@ -44,6 +45,7 @@ public abstract class XMLLoader extends AsyncTask {
                     currentTag = xpp.getName();
                     // Pass tag to startTagRead event
                     startTagRead(currentTag);
+
                 }
                 else if(event == XmlPullParser.TEXT){
                     if(xpp.isWhitespace())
@@ -74,4 +76,15 @@ public abstract class XMLLoader extends AsyncTask {
     public abstract void textRead(String tag, String text);
 
     public abstract void endTagRead(String tag);
+
+    public String checkAttribute(String attribute){
+        if(attribute == null || attribute == "")
+            return null;
+
+        String value;
+
+        value = xpp.getAttributeValue(null, attribute);
+
+        return value;
+    }
 }
