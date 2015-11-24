@@ -21,12 +21,10 @@
         android:textStyle="bold"
         android:textColor="#222" />
 
-    <ListView
+    <TextView
         android:id="@+id/patch_notes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="8dp" />
+        android:layout_weight="1" />
 
 </LinearLayout>

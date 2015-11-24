@@ -1,6 +1,7 @@
 package ca.delilaheve.arkcompanion.util.loader;
 
 import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.InputStream;
@@ -38,7 +39,12 @@ public abstract class XMLLoader extends AsyncTask {
             int event = xpp.getEventType();
             // While the document has not ended, read it
             while(event != XmlPullParser.END_DOCUMENT){
-                event = xpp.next();
+                try {
+                    event = xpp.next();
+                } catch (XmlPullParserException e) {
+                    e.printStackTrace();
+                    continue;
+                }
 
                 // Start tag event
                 if(event == XmlPullParser.START_TAG){
